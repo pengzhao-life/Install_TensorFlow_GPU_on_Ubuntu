@@ -32,4 +32,5 @@ with tf.device('/gpu:0'):
     c = tf.matmul(a, b)
 
 with tf.Session() as sess:
-    print (sess.run(c))```
+    print (sess.run(c))
+```
