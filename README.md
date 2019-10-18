@@ -19,4 +19,17 @@ I got error message that complained about Nvidia driver version. I reinstalled n
 Open an terminal, type 'python3' to enter python. 
 Then type 'import tensorflow' to import tensorflow module. It should have no error. I got error that complained 'protobuf' version incompatible. Run 'pip3 install protobuf' fixed the issue.
 
-Then type 'print(tensorflow.\_\_version\_\_)' to print version for testing. My version is 1.14.0.
+Then type
+
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
+or 
+
+import tensorflow as tf
+with tf.device('/gpu:0'):
+    a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+    b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+    c = tf.matmul(a, b)
+
+with tf.Session() as sess:
+    print (sess.run(c))
