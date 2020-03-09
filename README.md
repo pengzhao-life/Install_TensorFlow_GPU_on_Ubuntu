@@ -13,8 +13,6 @@ Go to tensor flow website to see whether this model is supported.
 Follow the section 'Ubuntu 16.04 (CUDA 10)' on this website 
 https://www.tensorflow.org/install/gpu
 
-I got error message that complained about Nvidia driver version. I reinstalled nvidia-driver-418, rather than 410. That helped.
-
 ## Test
 Open an terminal, type 'python3' to enter python. 
 Then type 'import tensorflow' to import tensorflow module. It should have no error. I got error that complained 'protobuf' version incompatible. Run 'pip3 install protobuf' fixed the issue.
@@ -34,3 +32,14 @@ with tf.device('/gpu:0'):
 with tf.Session() as sess:
     print (sess.run(c))
 ```
+
+## Update: need to install CUDA 9.0 with tensorflow-gpu 1.12
+remove previously installed cuda:
+```
+sudo apt-get purge nvidia-cuda-*
+```
+remove both cuda and nvidia driver as below. This may cause ubuntu login issue because the nvidia driver is no longer available, so switch to other driver before the deletion.
+```
+sudo apt-get purge nvidia-*
+```
+Then follow https://www.tensorflow.org/install/gpu to install CUDA 9.0 for tensorflow-gpu<=1.13 on Ubuntu 16.04
