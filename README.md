@@ -3,6 +3,7 @@ How to install TensorFLow with GPU support on Ubuntu 20.04 desktop
 ## Check which NVidia driver is in use
 Click 'Activities' on the upper left corner, then seach for 'Sofwareware & Updates' -> Additional drivers. For my case, it shows that NVidia driver 440 is used.
 
+## Install
 The easy and clean way to install tensorflow-gpu is to use conda virtual environment. It will install CUDA 10, cuDNN 7.6, etc automatically.
 
 ```
@@ -11,7 +12,7 @@ conda activate tf_gpu
 conda install tensorflow-gpu
 ```
 
-
+## Test
 Run the code below to test if tensorflow-gpu is working:
 ```import tensorflow as tf
    if tf.test.gpu_device_name(): 
